@@ -1,1 +1,8 @@
-<p>{{comment.content}}</p>
+<article>
+  <p>{{comment.content}}</p>
+  <footer>
+    <p>
+      <app-human-readable-date [date]="comment.postedAt"></app-human-readable-date> by <a href="">{{comment.author.username}}</a>
+    </p>
+  </footer>
+</article>
