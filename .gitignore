@@ -1,25 +1,50 @@
-/target/
-!.mvn/wrapper/maven-wrapper.jar
-
-### STS ###
+# IDE - Eclipse
 .apt_generated
 .classpath
 .factorypath
 .project
-.settings
+.settings/
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
-.idea
-*.iws
+# IDE - IntelliJ IDEA
+.idea/
 *.iml
-*.ipr
 
-### NetBeans ###
-/nbproject/private/
-/build/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# IDE - Neatbeans
+nbproject/private/
+build/
+nbbuild/
+nbdist/
+.nb-gradle/
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Compiled output
+dist/
+tmp/
+out-tsc/
+target/
+
+# Dependencies
+node_modules/
+
+# Misc
+.sass-cache/
+connect.lock
+coverage/
+libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+typings/
+!.mvn/wrapper/maven-wrapper.jar
+
+# System Files
+.DS_Store
+Thumbs.db
