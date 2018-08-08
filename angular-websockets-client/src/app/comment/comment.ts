@@ -1,4 +1,4 @@
-import { Author } from "../author/author";
+import { Author } from '../author/author';
 
 export interface Comment {
   id: number;

@@ -1,0 +1,14 @@
+.sidebar {
+  background-color: #FFF;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 200px;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.container {
+  margin-left: 200px;
+}

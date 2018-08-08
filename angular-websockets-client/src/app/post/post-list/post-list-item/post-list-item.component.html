@@ -1,0 +1,6 @@
+<article>
+  <h1><a [routerLink]="['/posts', post.id]">{{post.title}}</a></h1>
+  <footer>
+    <p>submitted <app-human-readable-date [date]="post.postedAt"></app-human-readable-date> by <a href="">{{post.author.username}}</a></p>
+  </footer>
+</article>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable } from "rxjs/internal/Observable";
-import { Client, over, StompSubscription } from "@stomp/stompjs";
-import * as SockJS from "sockjs-client";
+import { Observable } from 'rxjs/internal/Observable';
+import { Client, over, StompSubscription } from '@stomp/stompjs';
+import * as SockJS from 'sockjs-client';
 
 @Injectable({
   providedIn: 'root'

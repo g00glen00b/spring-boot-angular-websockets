@@ -1,0 +1,8 @@
+<div class="inner-container">
+  <article>
+    <h1>{{post?.title}}</h1>
+    <p>{{post?.content}}</p>
+    <footer><p>submitted <app-human-readable-date [date]="post?.postedAt"></app-human-readable-date> by <a href="">{{post?.author.username}}</a></p></footer>
+  </article>
+  <app-comment-list [comments]="post?.comments" *ngIf="post != null"></app-comment-list>
+</div>

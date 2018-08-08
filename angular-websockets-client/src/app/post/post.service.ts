@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { SocketClientService } from "../core/socket-client.service";
-import { Observable } from "rxjs/internal/Observable";
-import { Client } from "@stomp/stompjs";
-import { environment } from "../../environments/environment";
-import { PostListing } from "./post-listing";
-import { first, switchMap } from "rxjs/operators";
-import { PostInfo } from "./post-info";
+import { SocketClientService } from '../core/socket-client.service';
+import { Observable } from 'rxjs/internal/Observable';
+import { Client } from '@stomp/stompjs';
+import { environment } from '../../environments/environment';
+import { PostListing } from './post-listing';
+import { first, switchMap } from 'rxjs/operators';
+import { PostInfo } from './post-info';
 
 @Injectable({
   providedIn: 'root'
