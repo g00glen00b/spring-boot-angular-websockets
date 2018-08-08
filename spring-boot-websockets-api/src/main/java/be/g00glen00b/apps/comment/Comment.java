@@ -11,7 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -26,5 +26,5 @@ public class Comment {
 	@ManyToOne
 	private Author author;
 	private String content;
-	private LocalDate postedAt;
+	private LocalDateTime postedAt;
 }
