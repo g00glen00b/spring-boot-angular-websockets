@@ -13,7 +13,7 @@ public class WebSocketProperties {
 	/**
 	 * Prefix used by topics
 	 */
-	private String topicPrefix = "/toic";
+	private String topicPrefix = "/topic";
 	/**
 	 * Endpoint that can be used to connect to
 	 */

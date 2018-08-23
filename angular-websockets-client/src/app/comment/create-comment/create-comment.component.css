@@ -1,0 +1,46 @@
+* {
+  font-family: 'Lato', sans-serif;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  border: solid 1px #999;
+  margin-bottom: 10px;
+  outline: none;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+button {
+  box-sizing: border-box;
+  background-color: #5C7096;
+  color: #FFF;
+  border: none;
+  border-bottom: solid 5px #30415D;
+  font-size: 16px;
+  font-weight: 300;
+  padding: 8px 13px;
+  outline: none;
+  transition: background-color .3s, border-bottom-width .3s, margin-top .3s;
+}
+
+button:hover {
+  background-color: #6F83AA;
+}
+
+button:focus {
+  border-bottom-width: 1px;
+  margin-top: 4px;
+}
+
+button[disabled], button[disabled]:hover, button[disabled]:focus {
+  background-color: #B1B1B1;
+  border-color: #777;
+  cursor: not-allowed;
+}

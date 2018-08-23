@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { PostInfo } from '../post-info';
 import { Comment } from '../../comment/comment';
 
@@ -10,6 +10,8 @@ import { Comment } from '../../comment/comment';
 export class PostInfoComponent implements OnChanges {
   @Input()
   post: PostInfo;
+  @Output()
+  onComment: EventEmitter<string> = new EventEmitter<string>();
   comments: Comment[] = [];
 
   constructor() { }

@@ -1,0 +1,5 @@
+<form (submit)="addComment()">
+  <label>Leave a comment</label>
+  <textarea rows="3" [formControl]="content"></textarea>
+  <button [disabled]="content.invalid">Comment</button>
+</form>

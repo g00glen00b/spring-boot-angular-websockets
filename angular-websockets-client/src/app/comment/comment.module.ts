@@ -3,13 +3,17 @@ import { CommonModule } from '@angular/common';
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { CommentListItemComponent } from './comment-list/comment-list-item/comment-list-item.component';
 import { CoreModule } from '../core/core.module';
+import { CreateCommentComponent } from './create-comment/create-comment.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CoreModule,
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  declarations: [CommentListComponent, CommentListItemComponent],
-  exports: [CommentListComponent]
+  declarations: [CommentListComponent, CommentListItemComponent, CreateCommentComponent],
+  exports: [CommentListComponent, CreateCommentComponent]
 })
 export class CommentModule { }

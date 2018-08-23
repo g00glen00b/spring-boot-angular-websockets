@@ -5,6 +5,7 @@
 
 * {
   font-family: 'Lato', sans-serif;
+  box-sizing: border-box;
 }
 
 article {
@@ -16,7 +17,7 @@ article {
 
 article > p {
   color: #031424;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300;
 }
 

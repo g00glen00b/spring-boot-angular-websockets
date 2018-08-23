@@ -11,26 +11,16 @@ import { PostInfo } from './post-info';
   providedIn: 'root'
 })
 export class PostService {
-  private client: Observable<Client>;
 
   constructor(private socketClient: SocketClientService) {
-    this.client = socketClient.connect(environment.api);
   }
 
   findAll(): Observable<PostListing[]> {
-    return this.client
-      .pipe(
-        switchMap(client => this.socketClient.onMessage(client, '/topic/posts')),
-        first(),
-        map(posts => posts.map(this.getPostListing)));
+    return this.socketClient.onMessage('/topic/posts').pipe(first(), map(posts => posts.map(this.getPostListing)));
   }
 
   findOne(id: number): Observable<PostInfo> {
-    return this.client
-      .pipe(
-        switchMap(client => this.socketClient.onMessage(client, `/topic/posts/${id}`)),
-        first(),
-        map(post => this.getPostInfo(post)));
+    return this.socketClient.onMessage(`/topic/posts/${id}`).pipe(first(), map(post => this.getPostInfo(post)));
   }
 
   getPostListing(post: any): PostListing {

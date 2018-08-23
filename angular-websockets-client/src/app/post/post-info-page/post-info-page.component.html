@@ -1,1 +1,1 @@
-<app-post-info [post]="post" *ngIf="post != null"></app-post-info>
+<app-post-info [post]="post" *ngIf="post != null" (onComment)="addComment($event)"></app-post-info>

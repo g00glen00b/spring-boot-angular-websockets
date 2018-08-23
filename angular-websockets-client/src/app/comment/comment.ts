@@ -1,8 +1,8 @@
 import { Author } from '../author/author';
 
 export interface Comment {
-  id: number;
+  id?: number;
   content: string;
-  postedAt: Date;
+  postedAt?: Date;
   author: Author;
 }
