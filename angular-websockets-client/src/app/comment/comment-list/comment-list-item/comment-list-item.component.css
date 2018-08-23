@@ -1,28 +1,8 @@
 article {
   margin: 20px 0;
-  display: block;
-  width: 100%;
-}
-
-article footer {
-  color: #999;
-  font-size: 14px;
-  font-weight: 300;
-}
-
-article footer a {
-  text-decoration: none;
-  color: #CF6766;
-  font-weight: 400;
-}
-
-article footer p {
-  margin: 0;
+  padding: 0;
 }
 
 article > p {
-  color: #031424;
-  font-size: 16px;
-  font-weight: 300;
   margin: 0 0 5px;
 }

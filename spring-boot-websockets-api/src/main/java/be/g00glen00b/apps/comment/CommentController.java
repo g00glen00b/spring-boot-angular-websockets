@@ -12,7 +12,7 @@ public class CommentController {
     private CommentService service;
 
     @MessageMapping("/posts/{id}/comment")
-    @SendTo("/topic/posts/{id}/comment")
+    @SendTo("/topic/posts/{id}/new-comment")
     public CommentDTO createComment(@DestinationVariable("id") Long postId, CommentDTO comment) {
         return service.createComment(postId, comment);
     }

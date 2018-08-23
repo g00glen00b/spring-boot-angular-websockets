@@ -3,8 +3,7 @@ import { Comment } from '../comment';
 
 @Component({
   selector: 'app-comment-list',
-  templateUrl: './comment-list.component.html',
-  styleUrls: ['./comment-list.component.css']
+  templateUrl: './comment-list.component.html'
 })
 export class CommentListComponent {
   @Input()

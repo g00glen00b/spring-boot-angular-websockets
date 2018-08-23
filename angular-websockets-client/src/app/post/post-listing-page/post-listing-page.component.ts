@@ -5,8 +5,7 @@ import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-post-listing-page',
-  templateUrl: './post-listing-page.component.html',
-  styleUrls: ['./post-listing-page.component.css']
+  templateUrl: './post-listing-page.component.html'
 })
 export class PostListingPageComponent implements OnInit {
   posts: PostListing[];

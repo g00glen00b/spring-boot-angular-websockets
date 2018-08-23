@@ -3,35 +3,3 @@ h1 {
   color: #031424;
   font-size: 30px;
 }
-
-nav > ul {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
-nav > ul > li {
-  padding: 5px 0 5px 30px;
-  box-sizing: border-box;
-  margin: 5px 0 5px -30px;
-}
-
-nav > ul > li > a {
-  color: #B1B1B1;
-  text-transform: uppercase;
-  font-family: 'Lato', sans-serif;
-  font-size: 16px;
-  font-weight: 300;
-  text-decoration: none;
-}
-
-nav > ul > li.active {
-  border-left: solid 4px #8EAEBD;
-  padding-left: 26px;
-}
-
-nav > ul > li.active > a {
-  color: #031424;
-  font-weight: 600;
-}

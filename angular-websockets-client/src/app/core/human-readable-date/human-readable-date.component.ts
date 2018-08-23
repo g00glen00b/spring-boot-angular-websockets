@@ -3,8 +3,7 @@ import * as moment from 'moment';
 
 @Component({
   selector: 'app-human-readable-date',
-  templateUrl: './human-readable-date.component.html',
-  styleUrls: ['./human-readable-date.component.css']
+  templateUrl: './human-readable-date.component.html'
 })
 export class HumanReadableDateComponent implements OnChanges {
   @Input()

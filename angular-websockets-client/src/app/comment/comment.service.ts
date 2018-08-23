@@ -16,6 +16,6 @@ export class CommentService {
   }
 
   onComment(postId: number): Observable<Comment> {
-    return this.socketClient.onMessage(`/topic/posts/${postId}/comment`);
+    return this.socketClient.onMessage(`/topic/posts/${postId}/new-comment`);
   }
 }

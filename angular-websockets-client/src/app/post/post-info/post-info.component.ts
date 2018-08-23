@@ -4,12 +4,13 @@ import { Comment } from '../../comment/comment';
 
 @Component({
   selector: 'app-post-info',
-  templateUrl: './post-info.component.html',
-  styleUrls: ['./post-info.component.css']
+  templateUrl: './post-info.component.html'
 })
 export class PostInfoComponent implements OnChanges {
   @Input()
   post: PostInfo;
+  @Input()
+  newComment: string;
   @Output()
   onComment: EventEmitter<string> = new EventEmitter<string>();
   comments: Comment[] = [];

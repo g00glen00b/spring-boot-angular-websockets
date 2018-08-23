@@ -6,6 +6,6 @@
     <h2>Comments ({{comments.length}})</h2>
     <app-comment-list [comments]="comments"></app-comment-list>
     <p *ngIf="comments.length === 0"><em>Be the first to comment on this post!</em></p>
-    <app-create-comment (onComment)="onComment.emit($event)"></app-create-comment>
+    <app-create-comment [comment]="newComment" (onComment)="onComment.emit($event)"></app-create-comment>
   </article>
 </div>
