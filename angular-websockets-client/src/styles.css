@@ -23,6 +23,7 @@ h1 {
   height: 100%;
   width: 200px;
   padding: 30px;
+  z-index: 10;
 }
 
 .container {
@@ -165,4 +166,26 @@ button[disabled], button[disabled]:hover, button[disabled]:focus {
   background-color: #B1B1B1;
   border-color: #777;
   cursor: not-allowed;
+}
+
+p.error {
+  width: 100%;
+  background: #CF6766;
+  color: #FFF;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 11;
+  padding: 10px 0;
+  margin: 0;
+  text-align: center;
+  font-weight: 300;
+  font-size: 16px;
+}
+
+p.error > a.close {
+  float: right;
+  margin-right: 10px;
+  text-decoration: none;
+  color: #FFF;
 }

@@ -6,6 +6,7 @@ import { PostInfo } from '../post-info';
 import { CommentService } from '../../comment/comment.service';
 import { Observable } from 'rxjs/internal/Observable';
 import { Title } from '@angular/platform-browser';
+import { Subscription } from 'rxjs/internal/Subscription';
 
 @Component({
   selector: 'app-post-info-page',
@@ -14,25 +15,31 @@ import { Title } from '@angular/platform-browser';
 export class PostInfoPageComponent implements OnInit, OnDestroy {
   post: PostInfo;
   newComment: string;
+  commentSubscription: Subscription;
+  findOneSubscription: Subscription;
 
   constructor(private service: PostService, private commentService: CommentService, private activatedRoute: ActivatedRoute, private titleService: Title) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     const postId: Observable<number> = this.activatedRoute.params.pipe(map(params => params['id']));
-    postId.pipe(share(), switchMap(id => this.commentService.onComment(id))).subscribe(comment => this.post.comments.push(comment));
-    postId.pipe(share(), switchMap(id => this.service.findOne(id))).subscribe(post => {
+    this.commentSubscription = postId
+      .pipe(share(), switchMap(id => this.commentService.onComment(id)))
+      .subscribe(comment => this.post.comments.push(comment));
+    this.findOneSubscription = postId.pipe(share(), switchMap(id => this.service.findOne(id))).subscribe(post => {
       this.post = post;
       this.titleService.setTitle(`postit - ${post.title}`);
     });
   }
 
-  addComment(content: string) {
-    this.commentService.save(this.post.id, {content, authorId: 1});
-    this.newComment = '';
-  }
-
   ngOnDestroy(): void {
     this.titleService.setTitle('postit');
+    this.commentSubscription.unsubscribe();
+    this.findOneSubscription.unsubscribe();
+  }
+
+  addComment(content: string): void {
+    this.commentService.save(this.post.id, {content, authorId: 1});
+    this.newComment = '';
   }
 
 }

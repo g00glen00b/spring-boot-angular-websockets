@@ -15,11 +15,11 @@ export class CommentFormComponent implements OnChanges {
   constructor() { }
 
 
-  ngOnChanges() {
+  ngOnChanges(): void {
     this.content.setValue(this.comment);
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.onComment.emit(this.content.value);
   }
 }

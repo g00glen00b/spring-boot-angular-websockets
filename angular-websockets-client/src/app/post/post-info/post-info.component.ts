@@ -19,13 +19,13 @@ export class PostInfoComponent implements OnChanges {
 
   ngOnChanges(): void {
     if (this.post != null) {
-      this.comments = this.post.comments.sort(this.ascendingByPostedAt);
+      this.comments = this.post.comments.sort(PostInfoComponent.ascendingByPostedAt);
     } else {
       this.comments = [];
     }
   }
 
-  ascendingByPostedAt(comment1: Comment, comment2: Comment) {
+  static ascendingByPostedAt(comment1: Comment, comment2: Comment): number {
     return comment1.postedAt.getTime() - comment2.postedAt.getTime();
   }
 }

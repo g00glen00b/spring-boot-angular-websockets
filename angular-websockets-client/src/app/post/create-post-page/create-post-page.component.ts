@@ -13,16 +13,16 @@ export class CreatePostPageComponent implements OnInit, OnDestroy {
 
   constructor(private titleService: Title, private postService: PostService, private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.titleService.setTitle('postit - Create post');
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.titleService.setTitle('postit');
   }
 
-  createPost(input: PostInput) {
-    this.postService.save({...input, authorId: 1});
+  createPost(input: PostInput): void {
+    this.postService.save({...input, authorId: 100});
     this.router.navigate(['/posts']);
   }
 }

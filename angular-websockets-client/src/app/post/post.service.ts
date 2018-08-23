@@ -17,11 +17,11 @@ export class PostService {
   }
 
   findAll(): Observable<PostListing[]> {
-    return this.socketClient.onMessage('/topic/posts').pipe(first(), map(posts => posts.map(PostService.getPostListing)));
+    return this.socketClient.onMessage('/topic/posts/get').pipe(first(), map(posts => posts.map(PostService.getPostListing)));
   }
 
   findOne(id: number): Observable<PostInfo> {
-    return this.socketClient.onMessage(`/topic/posts/${id}`).pipe(first(), map(post => PostService.getPostInfo(post)));
+    return this.socketClient.onMessage(`/topic/posts/${id}/get`).pipe(first(), map(post => PostService.getPostInfo(post)));
   }
 
   save(post: PostInput) {

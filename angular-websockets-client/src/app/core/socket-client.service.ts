@@ -45,6 +45,17 @@ export class SocketClientService implements OnDestroy {
     }));
   }
 
+  onPlainMessage(topic: string): Observable<string> {
+    return this.connect().pipe(switchMap(inst => {
+      return new Observable<any>(observer => {
+        const subscription: StompSubscription = inst.subscribe(topic, message => {
+          observer.next(message.body);
+        });
+        return () => inst.unsubscribe(subscription.id);
+      });
+    }));
+  }
+
   send(topic: string, payload: any): void {
     this.connect().subscribe(inst => inst.send(topic, {}, JSON.stringify(payload)));
   }

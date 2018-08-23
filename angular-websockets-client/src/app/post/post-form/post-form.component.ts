@@ -19,12 +19,12 @@ export class PostFormComponent implements OnChanges {
 
   constructor(private fb: FormBuilder) { }
 
-  ngOnChanges() {
+  ngOnChanges(): void {
     this.form.controls.title.setValue(this.post.title);
     this.form.controls.content.setValue(this.post.content);
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.onPost.emit({title: this.form.controls.title.value, content: this.form.controls.content.value});
   }
 
