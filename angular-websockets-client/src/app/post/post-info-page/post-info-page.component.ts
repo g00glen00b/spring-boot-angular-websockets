@@ -27,7 +27,7 @@ export class PostInfoPageComponent implements OnInit, OnDestroy {
   }
 
   addComment(content: string) {
-    this.commentService.addComment(this.post.id, {content, author: {id: 1}});
+    this.commentService.save(this.post.id, {content, authorId: 1});
     this.newComment = '';
   }
 

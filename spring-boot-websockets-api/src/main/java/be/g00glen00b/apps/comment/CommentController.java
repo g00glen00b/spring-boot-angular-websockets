@@ -11,8 +11,8 @@ import org.springframework.stereotype.Controller;
 public class CommentController {
     private CommentService service;
 
-    @MessageMapping("/posts/{id}/comment")
-    @SendTo("/topic/posts/{id}/new-comment")
+    @MessageMapping("/posts/{id}/comment/create")
+    @SendTo("/topic/posts/{id}/comment/created")
     public CommentDTO createComment(@DestinationVariable("id") Long postId, CommentInputDTO comment) {
         return service.createComment(postId, comment);
     }

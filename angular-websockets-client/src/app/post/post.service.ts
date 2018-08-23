@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment';
 import { PostListing } from './post-listing';
 import { first, map, switchMap } from 'rxjs/operators';
 import { PostInfo } from './post-info';
+import { PostInput } from './post-input';
 
 @Injectable({
   providedIn: 'root'
@@ -16,25 +17,33 @@ export class PostService {
   }
 
   findAll(): Observable<PostListing[]> {
-    return this.socketClient.onMessage('/topic/posts').pipe(first(), map(posts => posts.map(this.getPostListing)));
+    return this.socketClient.onMessage('/topic/posts').pipe(first(), map(posts => posts.map(PostService.getPostListing)));
   }
 
   findOne(id: number): Observable<PostInfo> {
-    return this.socketClient.onMessage(`/topic/posts/${id}`).pipe(first(), map(post => this.getPostInfo(post)));
+    return this.socketClient.onMessage(`/topic/posts/${id}`).pipe(first(), map(post => PostService.getPostInfo(post)));
   }
 
-  getPostListing(post: any): PostListing {
+  save(post: PostInput) {
+    return this.socketClient.send('/topic/posts/create', post);
+  }
+
+  onPost(): Observable<PostListing> {
+    return this.socketClient.onMessage('/topic/posts/created').pipe(map(post => PostService.getPostListing(post)));
+  }
+
+  static getPostListing(post: any): PostListing {
     const postedAt = new Date(post['postedAt']);
     return {...post, postedAt};
   }
 
-  getPostInfo(post: any): PostInfo {
+  static getPostInfo(post: any): PostInfo {
     const postedAt = new Date(post['postedAt']);
-    const comments = post['comments'].map(comment => this.getComment(comment));
+    const comments = post['comments'].map(comment => PostService.getComment(comment));
     return {...post, postedAt, comments};
   }
 
-  getComment(comment: any): Comment {
+  static getComment(comment: any): Comment {
     const postedAt = new Date(comment['postedAt']);
     return {...comment, postedAt};
   }

@@ -1,11 +1,15 @@
 package be.g00glen00b.apps.post;
 
+import be.g00glen00b.apps.author.AuthorNotFoundException;
+import be.g00glen00b.apps.author.AuthorRepository;
 import be.g00glen00b.apps.author.AuthorService;
 import be.g00glen00b.apps.comment.CommentService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,6 +19,7 @@ public class PostService {
     private PostRepository repository;
     private CommentService commentService;
     private AuthorService authorService;
+    private AuthorRepository authorRepository;
 
     public List<PostListingDTO> findAll() {
         return repository.findAll().stream().map(this::getListingDTO).collect(Collectors.toList());
@@ -41,5 +46,15 @@ public class PostService {
             authorService.getDTO(entity.getAuthor()),
             entity.getContent(),
             entity.getComments().stream().map(commentService::getDTO).collect(Collectors.toList()));
+    }
+
+    public PostListingDTO save(PostInputDTO post) {
+        return getListingDTO(repository.saveAndFlush(new Post(
+            null,
+            post.getTitle(),
+            post.getContent(),
+            new ArrayList<>(),
+            authorRepository.findById(post.getAuthorId()).orElseThrow(AuthorNotFoundException::new),
+            LocalDateTime.now())));
     }
 }
