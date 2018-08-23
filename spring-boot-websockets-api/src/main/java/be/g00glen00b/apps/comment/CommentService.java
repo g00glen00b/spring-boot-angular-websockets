@@ -20,12 +20,12 @@ public class CommentService {
     private AuthorRepository authorRepository;
 
     @Transactional
-    public CommentDTO createComment(Long postId, CommentDTO comment) {
+    public CommentDTO createComment(Long postId, CommentInputDTO comment) {
         Post post = postRepository.findById(postId).orElseThrow(PostNotFoundException::new);
         Comment entity = new Comment(
             null,
             post,
-            authorRepository.findById(comment.getAuthor().getId()).orElseThrow(AuthorNotFoundException::new),
+            authorRepository.findById(comment.getAuthorId()).orElseThrow(AuthorNotFoundException::new),
             comment.getContent(),
             LocalDateTime.now());
         post.getComments().add(entity);
