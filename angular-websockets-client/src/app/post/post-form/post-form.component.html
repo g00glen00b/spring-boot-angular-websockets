@@ -1,0 +1,13 @@
+<div class="inner-container">
+  <article>
+    <form [formGroup]="form" (submit)="onSubmit()">
+      <label>Title</label>
+      <input type="text" formControlName="title" />
+
+      <label>Content</label>
+      <textarea rows="10" formControlName="content"></textarea>
+
+      <button [disabled]="form.invalid">Create post</button>
+    </form>
+  </article>
+</div>

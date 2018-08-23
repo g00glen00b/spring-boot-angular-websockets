@@ -9,6 +9,8 @@ import { CreatePostPageComponent } from './create-post-page/create-post-page.com
 import { CoreModule } from '../core/core.module';
 import { PostInfoComponent } from './post-info/post-info.component';
 import { CommentModule } from '../comment/comment.module';
+import { PostFormComponent } from './post-form/post-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Route[] = [
   {path: 'posts', component: PostListingPageComponent},
@@ -21,8 +23,10 @@ const routes: Route[] = [
     CommonModule,
     CoreModule,
     CommentModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    FormsModule,
+    ReactiveFormsModule
   ],
-  declarations: [PostListingPageComponent, PostInfoPageComponent, PostListComponent, PostListItemComponent, CreatePostPageComponent, PostInfoComponent]
+  declarations: [PostListingPageComponent, PostInfoPageComponent, PostListComponent, PostListItemComponent, CreatePostPageComponent, PostInfoComponent, PostFormComponent]
 })
 export class PostModule { }

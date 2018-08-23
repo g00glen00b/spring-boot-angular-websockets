@@ -129,7 +129,7 @@ label {
   margin-bottom: 10px;
 }
 
-textarea {
+textarea, input[type=text] {
   display: block;
   width: 100%;
   border: solid 1px #999;
@@ -137,6 +137,7 @@ textarea {
   outline: none;
   font-size: 14px;
   font-weight: 300;
+  padding: 5px;
 }
 
 button {

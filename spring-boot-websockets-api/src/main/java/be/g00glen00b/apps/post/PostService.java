@@ -48,6 +48,7 @@ public class PostService {
             entity.getComments().stream().map(commentService::getDTO).collect(Collectors.toList()));
     }
 
+    @Transactional
     public PostListingDTO save(PostInputDTO post) {
         return getListingDTO(repository.saveAndFlush(new Post(
             null,

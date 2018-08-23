@@ -2,10 +2,10 @@ import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-create-comment',
-  templateUrl: './create-comment.component.html'
+  selector: 'app-comment-form',
+  templateUrl: './comment-form.component.html'
 })
-export class CreateCommentComponent implements OnChanges {
+export class CommentFormComponent implements OnChanges {
   content: FormControl = new FormControl('', Validators.required);
   @Input()
   comment: string;
@@ -19,7 +19,7 @@ export class CreateCommentComponent implements OnChanges {
     this.content.setValue(this.comment);
   }
 
-  addComment() {
+  onSubmit() {
     this.onComment.emit(this.content.value);
   }
 }

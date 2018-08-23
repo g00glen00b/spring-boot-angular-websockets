@@ -1,11 +1,9 @@
-<div class="inner-container">
-  <article>
-    <h1>{{post?.title}}</h1>
-    <p>{{post?.content}}</p>
-    <footer><p>submitted <app-human-readable-date [date]="post?.postedAt"></app-human-readable-date> by <a href="">{{post?.author.username}}</a></p></footer>
-    <h2>Comments ({{comments.length}})</h2>
-    <app-comment-list [comments]="comments"></app-comment-list>
-    <p *ngIf="comments.length === 0"><em>Be the first to comment on this post!</em></p>
-    <app-create-comment [comment]="newComment" (onComment)="onComment.emit($event)"></app-create-comment>
-  </article>
-</div>
+<article>
+  <h1>{{post?.title}}</h1>
+  <p>{{post?.content}}</p>
+  <footer><p>submitted <app-human-readable-date [date]="post?.postedAt"></app-human-readable-date> by <a href="">{{post?.author.username}}</a></p></footer>
+  <h2>Comments ({{comments.length}})</h2>
+  <app-comment-list [comments]="comments"></app-comment-list>
+  <p *ngIf="comments.length === 0"><em>Be the first to comment on this post!</em></p>
+  <app-comment-form [comment]="newComment" (onComment)="onComment.emit($event)"></app-comment-form>
+</article>

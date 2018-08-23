@@ -1,3 +1,2 @@
-<p>
-  create-post-page works!
-</p>
+<h1>Create a new post</h1>
+<app-post-form [post]="newPost" (onPost)="createPost($event)"></app-post-form>
