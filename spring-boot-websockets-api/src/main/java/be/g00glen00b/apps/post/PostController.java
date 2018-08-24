@@ -36,6 +36,12 @@ public class PostController {
         return service.findOne(id);
     }
 
+
+    @SubscribeMapping("/author/{username}/posts/get")
+    public List<PostListingDTO> findPostsByAuthor(@DestinationVariable("username") String username) {
+        return service.findByAuthor(username);
+    }
+
     @MessageExceptionHandler
     @SendToUser("/topic/error")
     public String handleException(PostNotFoundException ex) {

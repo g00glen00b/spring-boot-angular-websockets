@@ -10,8 +10,8 @@ import { Subscription } from 'rxjs/internal/Subscription';
 })
 export class PostListingPageComponent implements OnInit, OnDestroy {
   posts: PostListing[];
-  findAllSubscription: Subscription;
-  postSubscription: Subscription;
+  private findAllSubscription: Subscription;
+  private postSubscription: Subscription;
 
   constructor(private service: PostService) { }
 

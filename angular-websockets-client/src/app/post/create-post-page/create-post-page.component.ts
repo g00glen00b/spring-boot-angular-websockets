@@ -22,7 +22,7 @@ export class CreatePostPageComponent implements OnInit, OnDestroy {
   }
 
   createPost(input: PostInput): void {
-    this.postService.save({...input, authorId: 100});
+    this.postService.save({...input, authorId: 1});
     this.router.navigate(['/posts']);
   }
 }

@@ -27,6 +27,7 @@ const routes: Route[] = [
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [PostListingPageComponent, PostInfoPageComponent, PostListComponent, PostListItemComponent, CreatePostPageComponent, PostInfoComponent, PostFormComponent]
+  declarations: [PostListingPageComponent, PostInfoPageComponent, PostListComponent, PostListItemComponent, CreatePostPageComponent, PostInfoComponent, PostFormComponent],
+  exports: [PostListComponent]
 })
 export class PostModule { }

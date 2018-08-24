@@ -25,6 +25,13 @@ public class PostService {
         return repository.findAll().stream().map(this::getListingDTO).collect(Collectors.toList());
     }
 
+    public List<PostListingDTO> findByAuthor(String username) {
+        return repository
+            .findAllByAuthorUsername(username).stream()
+            .map(this::getListingDTO)
+            .collect(Collectors.toList());
+    }
+
     @Transactional
     public PostInfoDTO findOne(Long id) {
         return repository.findById(id).map(this::getInfoDTO).orElseThrow(PostNotFoundException::new);

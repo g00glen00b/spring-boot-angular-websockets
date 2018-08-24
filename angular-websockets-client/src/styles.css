@@ -15,6 +15,13 @@ h1 {
   margin: 50px 0;
 }
 
+h2 {
+  font-weight: 600;
+  font-size: 18px;
+  color: #031424;
+  margin: 20px 0;
+}
+
 .sidebar {
   background-color: #FFF;
   position: fixed;

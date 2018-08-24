@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { Route, RouterModule } from '@angular/router';
 import { PostModule } from './post/post.module';
 import { CoreModule } from './core/core.module';
+import { AuthorModule } from './author/author.module';
 
 const routes: Route[] = [
   {path:'', redirectTo: 'posts', pathMatch: 'full'}
@@ -18,7 +19,8 @@ const routes: Route[] = [
     BrowserModule,
     CoreModule,
     RouterModule.forRoot(routes),
-    PostModule
+    PostModule,
+    AuthorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

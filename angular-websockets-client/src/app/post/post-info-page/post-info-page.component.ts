@@ -15,8 +15,8 @@ import { Subscription } from 'rxjs/internal/Subscription';
 export class PostInfoPageComponent implements OnInit, OnDestroy {
   post: PostInfo;
   newComment: string;
-  commentSubscription: Subscription;
-  findOneSubscription: Subscription;
+  private commentSubscription: Subscription;
+  private findOneSubscription: Subscription;
 
   constructor(private service: PostService, private commentService: CommentService, private activatedRoute: ActivatedRoute, private titleService: Title) { }
 

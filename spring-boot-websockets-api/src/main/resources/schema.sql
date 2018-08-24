@@ -1,6 +1,7 @@
 create table author (
   id        integer identity primary key,
-  username  varchar(64) unique not null);
+  username  varchar(64) unique not null,
+  bio       varchar(1024) not null);
 
 create table post (
   id        integer identity primary key,

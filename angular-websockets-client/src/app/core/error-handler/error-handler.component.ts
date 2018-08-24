@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs/internal/Subscription';
 })
 export class ErrorHandlerComponent implements OnInit, OnDestroy {
   message: string;
-  errorSubscription: Subscription;
+  private errorSubscription: Subscription;
 
   constructor(private errorService: ErrorService) { }
 
