@@ -3,11 +3,11 @@ import { PostService } from '../../post/post.service';
 import { AuthorService } from '../author.service';
 import { ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { map, share, switchMap } from 'rxjs/operators';
+import { map, share, switchMap, takeUntil } from 'rxjs/operators';
 import { Observable } from 'rxjs/internal/Observable';
 import { DetailedAuthor } from '../detailed-author';
-import { Subscription } from 'rxjs/internal/Subscription';
 import { PostListing } from '../../post/post-listing';
+import { Subject } from 'rxjs/internal/Subject';
 
 @Component({
   selector: 'app-author-page',
@@ -16,31 +16,31 @@ import { PostListing } from '../../post/post-listing';
 export class AuthorPageComponent implements OnInit, OnDestroy {
   author: DetailedAuthor;
   posts: PostListing[];
-  private findOneSubscription: Subscription;
-  private findPostsSubscription: Subscription;
+  private unsubscribeSubject: Subject<void> = new Subject<void>();
 
   constructor(private postService: PostService, private authorService: AuthorService, private activatedRoute: ActivatedRoute, private titleService: Title) { }
 
   ngOnInit(): void {
     console.log('Initialize');
     const usernameObservable: Observable<string> = this.activatedRoute.params.pipe(map(params => params['username']));
-    this.findOneSubscription = usernameObservable
-      .pipe(share(), switchMap(username => this.authorService.findOne(username)))
+    usernameObservable
+      .pipe(share(), switchMap(username => this.authorService.findOne(username)), takeUntil(this.unsubscribeSubject))
       .subscribe(author => {
         this.author = author;
         this.titleService.setTitle(`postit - Profile of ${author.username}`);
       });
-    this.findPostsSubscription = usernameObservable
+    usernameObservable
       .pipe(
         share(),
         switchMap(username => this.postService.findByAuthor(username)),
-        map(posts => posts.sort(AuthorPageComponent.descendingByPostedAt)))
+        map(posts => posts.sort(AuthorPageComponent.descendingByPostedAt)),
+        takeUntil(this.unsubscribeSubject))
       .subscribe(posts => this.posts = posts);
   }
 
   ngOnDestroy(): void {
-    this.findOneSubscription.unsubscribe();
-    this.findPostsSubscription.unsubscribe();
+    this.unsubscribeSubject.next();
+    this.unsubscribeSubject.complete();
     this.titleService.setTitle('postit');
   }
 
