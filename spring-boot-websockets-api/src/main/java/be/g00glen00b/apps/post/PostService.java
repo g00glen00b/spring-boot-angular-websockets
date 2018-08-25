@@ -37,24 +37,6 @@ public class PostService {
         return repository.findById(id).map(this::getInfoDTO).orElseThrow(PostNotFoundException::new);
     }
 
-    public PostListingDTO getListingDTO(Post entity) {
-        return new PostListingDTO(
-            entity.getId(),
-            entity.getTitle(),
-            entity.getPostedAt(),
-            authorService.getDTO(entity.getAuthor()));
-    }
-
-    public PostInfoDTO getInfoDTO(Post entity) {
-        return new PostInfoDTO(
-            entity.getId(),
-            entity.getTitle(),
-            entity.getPostedAt(),
-            authorService.getDTO(entity.getAuthor()),
-            entity.getContent(),
-            entity.getComments().stream().map(commentService::getDTO).collect(Collectors.toList()));
-    }
-
     @Transactional
     public PostListingDTO save(PostInputDTO post) {
         return getListingDTO(repository.saveAndFlush(new Post(
@@ -64,5 +46,23 @@ public class PostService {
             new ArrayList<>(),
             authorRepository.findById(post.getAuthorId()).orElseThrow(AuthorNotFoundException::new),
             LocalDateTime.now())));
+    }
+
+    private PostListingDTO getListingDTO(Post entity) {
+        return new PostListingDTO(
+            entity.getId(),
+            entity.getTitle(),
+            entity.getPostedAt(),
+            authorService.getDTO(entity.getAuthor()));
+    }
+
+    private PostInfoDTO getInfoDTO(Post entity) {
+        return new PostInfoDTO(
+            entity.getId(),
+            entity.getTitle(),
+            entity.getPostedAt(),
+            authorService.getDTO(entity.getAuthor()),
+            entity.getContent(),
+            entity.getComments().stream().map(commentService::getDTO).collect(Collectors.toList()));
     }
 }

@@ -18,13 +18,13 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Comment {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	@ManyToOne
-	private Post post;
-	@ManyToOne
-	private Author author;
-	private String content;
-	private LocalDateTime postedAt;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @ManyToOne
+    private Post post;
+    @ManyToOne
+    private Author author;
+    private String content;
+    private LocalDateTime postedAt;
 }

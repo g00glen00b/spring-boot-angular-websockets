@@ -15,16 +15,16 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 @EnableConfigurationProperties(WebSocketProperties.class)
 @AllArgsConstructor
 public class WebSocketConfiguration implements WebSocketMessageBrokerConfigurer {
-	private WebSocketProperties properties;
+    private WebSocketProperties properties;
 
-	@Override
-	public void configureMessageBroker(MessageBrokerRegistry registry) {
-		registry.enableSimpleBroker(properties.getTopicPrefix());
-		registry.setApplicationDestinationPrefixes(properties.getApplicationPrefix());
-	}
+    @Override
+    public void configureMessageBroker(MessageBrokerRegistry registry) {
+        registry.enableSimpleBroker(properties.getTopicPrefix());
+        registry.setApplicationDestinationPrefixes(properties.getApplicationPrefix());
+    }
 
-	@Override
-	public void registerStompEndpoints(StompEndpointRegistry registry) {
-		registry.addEndpoint(properties.getEndpoint()).setAllowedOrigins(properties.getAllowedOrigins()).withSockJS();
-	}
+    @Override
+    public void registerStompEndpoints(StompEndpointRegistry registry) {
+        registry.addEndpoint(properties.getEndpoint()).setAllowedOrigins(properties.getAllowedOrigins()).withSockJS();
+    }
 }
